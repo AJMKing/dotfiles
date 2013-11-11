@@ -1,0 +1,1 @@
+/home/mrichar1/sync/dotfiles/.emacs.d
