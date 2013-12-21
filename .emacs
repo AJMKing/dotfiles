@@ -23,8 +23,8 @@
 (setq-default tab-width 2)
 
  ;;Set a smaller font size
-(set-default-font "7x14")
-
+;;(set-default-font "7x14")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 ;;Disable backup file creation
 (setq make-backup-files nil)
 
