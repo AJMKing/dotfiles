@@ -13,6 +13,30 @@
  '(transient-mark-mode t)
  '(user-mail-address "alasdair.king@me.com"))
 
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+
+(require 'mwheel)
+(neotree)
+
+
+
+
+
+
+
+
+
+
+;; Older Config
+
 (define-key text-mode-map (kbd "TAB") 'tab-to-tab-stop)
 
 ;; bind newline with indent
@@ -24,7 +48,7 @@
 
  ;;Set a smaller font size
 ;;(set-default-font "7x14")
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-14"))
 ;;Disable backup file creation
 (setq make-backup-files nil)
 
@@ -39,6 +63,12 @@
 
 ;; ========== Support Wheel Mouse Scrolling ==========
 (mouse-wheel-mode t)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
+(setq scroll-step 1)
+
+
 
 ;;Set an import path
 (setq load-path (cons "~/.emacs-import" load-path))
@@ -54,9 +84,9 @@
               auto-mode-alist))
 
 ;; Load python-mode (not emacs stdlib one)
-(setq py-install-directory "~/.emacs.d/python-mode.el-6.1.2/")
-  (add-to-list 'load-path py-install-directory)
-    (require 'python-mode)
+;;(setq py-install-directory "~/.emacs.d/python-mode.el-6.1.2/")
+;;  (add-to-list 'load-path py-install-directory)
+;;    (require 'python-mode)
 
 ;; Don't run a python shell for testing
 (setq py-shell-name "/bin/true")
@@ -75,3 +105,9 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
